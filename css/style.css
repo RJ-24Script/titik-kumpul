@@ -523,30 +523,29 @@ body {
   }
 
   .nav-links {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  flex-direction: column;
-  background-color: var(--color-white);
-  padding: 1rem 2rem;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  z-index: 999;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: var(--color-white);
+    padding: 1rem 2rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
 
-  /* Tambahan animasi */
-  opacity: 0;
-  transform: translateY(-10px);
-  pointer-events: none;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
+    /* Tambahan animasi */
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
 
   .nav-links.active {
-  display: flex; /* biar muncul */
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
+    display: flex; /* biar muncul */
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
   .nav-links a {
     color: var(--color-white);
     padding: 1rem 0;
@@ -564,7 +563,7 @@ body {
   border-radius: 50%;
   font-size: 1.2rem;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   display: none;
   z-index: 999;
   transition: background-color 0.3s ease;
