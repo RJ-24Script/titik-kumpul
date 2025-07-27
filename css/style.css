@@ -93,26 +93,31 @@ nav {
   justify-content: space-between;
   align-items: center;
 }
-  .nav-links {
-    background-color: rgba(0, 0, 0, 0.4) !important; /* transparan hitam lembut */
-    backdrop-filter: blur(10px); /* efek blur transparan */
-    box-shadow: none !important;
-    border: none;
-  }
+.nav-links {
+  background-color: rgba(0, 0, 0, 0.4) !important; /* transparan hitam lembut */
+  backdrop-filter: blur(10px); /* efek blur transparan */
+  box-shadow: none !important;
+  border: none;
+}
 
-  .nav-links a {
-    color: white !important;
-  }
+.nav-links a {
+  color: white !important;
+}
 
-  #header.scrolled .nav-links {
-    background-color: rgba(255, 255, 255, 0.55) !important; /* saat scroll jadi putih */
-    backdrop-filter: blur(10px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-  }
+#header.scrolled .nav-links {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.55
+  ) !important; /* saat scroll jadi putih */
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
 
-  #header.scrolled .nav-links a {
-    color: var(--color-text) !important;
-  }
+#header.scrolled .nav-links a {
+  color: var(--color-text) !important;
+}
 .nav-links a::after {
   content: "";
   position: absolute;
@@ -130,8 +135,6 @@ nav {
 /* --- Hero --- */
 #hero {
   height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("../img/hero-background.jpg") no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -151,7 +154,6 @@ nav {
   font-size: 0.9rem; /* Ukuran lebih kecil */
   line-height: 1.5; /* Jarak antar baris lebih rapat */
   margin-bottom: 2.5rem; /* Jarak bawah lebih pendek */
-
 }
 .cta-button {
   padding: 12px 30px;
@@ -610,8 +612,8 @@ footer p {
 }
 .event-content {
   text-align: center; /* Properti ini membuat semua teks di dalamnya menjadi rata tengah */
-  font-size: 1.2rem;  /* Opsional: Membuat tulisan sedikit lebih besar agar lebih terlihat */
-  opacity: 0.8;       /* Opsional: Membuat tulisan tampak sedikit pudar */
+  font-size: 1.2rem; /* Opsional: Membuat tulisan sedikit lebih besar agar lebih terlihat */
+  opacity: 0.8; /* Opsional: Membuat tulisan tampak sedikit pudar */
 }
 @media (max-width: 400px) {
   .logo-text {
@@ -686,4 +688,3 @@ h1 {
   transform: translateY(0);
   pointer-events: auto;
 }
-
