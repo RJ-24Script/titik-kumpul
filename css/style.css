@@ -80,26 +80,8 @@ nav {
   text-decoration: none;
 }
 
-.logo img.logo-icon {
-  width: 40px;
-  height: auto;
-}
-
-.logo span {
-  font-family: "Dancing Script", cursive;
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--color-text);
-}
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-}
-
 .logo-icon {
-  width: 40px;
+  width: 60px;
   height: auto;
 }
 
@@ -111,7 +93,6 @@ nav {
   transition: font-size 0.3s ease, color 0.3s ease;
 }
 
-/* Saat scroll */
 #header.scrolled .logo-text {
   color: var(--color-text);
   font-size: 1.4rem;
@@ -137,7 +118,10 @@ nav {
   font-size: 2rem; /* Sedikit lebih kecil saat di-scroll */
   color: var(--color-text);
 }
-
+#header.scrolled .logo-icon {
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
 .nav-links {
   list-style: none;
   display: flex;
@@ -190,7 +174,7 @@ nav {
 }
 
 .hero-content h1 {
-  font-size: 3.5rem;
+  font-size: 2rem;
   line-height: 1.2;
   margin-bottom: 1rem;
 }
@@ -311,6 +295,13 @@ section {
 
 .kontak-info p {
   margin-bottom: 1rem;
+}
+.sub-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  text-align: center;
+  color: var(--color-text);
+  margin: 3rem 0 1.5rem;
 }
 
 /* --- Footer --- */
@@ -532,25 +523,139 @@ body {
   }
 
   .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    background-color: var(--color-primary);
-    display: none;
-    padding: 1rem 2rem;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-    z-index: 999;
-  }
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  flex-direction: column;
+  background-color: var(--color-white);
+  padding: 1rem 2rem;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+
+  /* Tambahan animasi */
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
 
   .nav-links.active {
-    display: flex;
-  }
-
+  display: flex; /* biar muncul */
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
   .nav-links a {
     color: var(--color-white);
     padding: 1rem 0;
     font-weight: 700;
   }
+}
+#scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: none;
+  z-index: 999;
+  transition: background-color 0.3s ease;
+}
+#scrollTopBtn:hover {
+  background-color: #a88a6d;
+}
+.sub-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin: 2rem 0 1rem;
+  text-align: center;
+  color: var(--color-text);
+}
+.menu-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  background-color: var(--color-border);
+  color: var(--color-text);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.tab-button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.tab-button.active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+#event {
+  background-color: var(--color-bg);
+}
+
+#event .menu-item img {
+  height: 250px;
+  object-fit: cover;
+}
+
+#event .menu-item h3 {
+  font-size: 1.4rem;
+  margin-top: 1rem;
+}
+
+#event .menu-item p {
+  font-size: 0.95rem;
+  padding: 0 1rem 1.5rem;
+}
+.event-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* atur tinggi sesuai kebutuhan */
+  text-align: center;
+  font-size: 1 rem;
+  font-weight: bold;
+  color: var(--color-text); /* atau warna lain yang kamu inginkan */
+}
+.hamburger.is-active span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+.hamburger.is-active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.is-active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+.hamburger span {
+  transition: 0.4s ease;
+}
+section {
+  scroll-margin-top: 100px; /* agar anchor tidak tertutup navbar */
 }
