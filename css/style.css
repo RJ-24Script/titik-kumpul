@@ -66,6 +66,9 @@ section {
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
+  color: inherit;
+  position: relative;
+  z-index: 1001; /* lebih tinggi dari nav/hamburger */
 }
 .logo-icon {
   width: 60px;
@@ -693,4 +696,20 @@ h1 {
 }
 .tab-button.active {
   transform: scale(1.05);
+}
+.logo-icon {
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .logo-icon {
+    width: 40px;
+  }
+
+  .logo-text {
+    font-size: 1.2rem;
+    color: var(--color-white); /* Pastikan tidak jadi biru */
+  }
 }
