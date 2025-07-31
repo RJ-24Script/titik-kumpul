@@ -57,21 +57,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Tab menu
-  const tabButtons = document.querySelectorAll(".tab-button");
-  const tabContents = document.querySelectorAll(".tab-content");
-  tabButtons.forEach((button) => {
+  // Tab menu (SIMPLE VERSION)
+const tabButtons = document.querySelectorAll(".tab-button");
+const tabContents = document.querySelectorAll(".tab-content");
+
+tabButtons.forEach(button => {
     button.addEventListener("click", () => {
-      tabButtons.forEach((btn) => btn.classList.remove("active"));
-      tabContents.forEach((content) => content.classList.remove("active"));
-      button.classList.add("active");
-      const tabId = button.getAttribute("data-tab");
-      const content = document.getElementById(tabId);
-      if (content) {
-        setTimeout(() => content.classList.add("active"), 50);
-      }
+        // 1. Hapus 'active' dari semua tombol dan konten
+        tabButtons.forEach(btn => btn.classList.remove("active"));
+        tabContents.forEach(content => content.classList.remove("active"));
+
+        // 2. Tambahkan 'active' ke tombol dan konten yang diklik
+        button.classList.add("active");
+        const tabId = button.getAttribute("data-tab");
+        const activeContent = document.getElementById(tabId);
+        if (activeContent) {
+            activeContent.classList.add("active");
+        }
     });
-  });
+});
 });
 document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.getElementById("hamburger");
@@ -106,5 +110,17 @@ document.querySelectorAll('.next-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const grid = btn.previousElementSibling;
     grid.scrollBy({ left: grid.clientWidth * 0.8, behavior: 'smooth' });
+  });
+});
+// Script paling sederhana dan anti error
+document.querySelectorAll('.tab-button').forEach(button => {
+  button.addEventListener('click', function () {
+    // Tab tombol
+    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+    this.classList.add('active');
+
+    // Tab content
+    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+    document.getElementById(this.dataset.tab).classList.add('active');
   });
 });
