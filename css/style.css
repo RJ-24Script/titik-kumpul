@@ -1,6 +1,9 @@
-/* === TITIK KUMPUL CSS === */
+/* ==========================================
+   TITIK KUMPUL — FINAL CSS
+   Desktop default, Mobile full‑screen overlay
+   ========================================== */
 
-/* --- Variabel & Reset --- */
+/* 1. VARIABLES & RESET */
 :root {
   --font-heading: "Playfair Display", serif;
   --font-body: "Lato", sans-serif;
@@ -10,12 +13,16 @@
   --color-white: #ffffff;
   --color-border: #e0dcd1;
 }
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+
+/* 2. BASE STYLES */
 body {
   font-family: var(--font-body);
   background-color: var(--color-bg);
@@ -27,9 +34,7 @@ img {
   max-width: 100%;
   display: block;
 }
-h1,
-h2,
-h3 {
+h1, h2, h3 {
   font-family: var(--font-heading);
   font-weight: 700;
 }
@@ -43,21 +48,20 @@ section {
   scroll-margin-top: 100px;
 }
 
-/* --- Header --- */
+/* 3. HEADER */
 #header {
   position: fixed;
+  top: 0; left: 0;
   width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0,0,0,0.3);
   padding: 1rem 0;
   transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  z-index: 1000;
 }
 #header.scrolled {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255,255,255,0.9);
   backdrop-filter: blur(5px);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 /* Logo */
@@ -67,18 +71,18 @@ section {
   gap: 0.5rem;
   text-decoration: none;
   color: inherit;
-  position: relative;
-  z-index: 1001; /* lebih tinggi dari nav/hamburger */
+  z-index: 1001;
 }
 .logo-icon {
-  width: 60px;
-  height: auto;
+  width: 50px;
   transition: transform 0.3s ease;
+}
+#header.scrolled .logo-icon {
+  transform: scale(0.9);
 }
 .logo-text {
   font-family: "Dancing Script", cursive;
   font-size: 1.6rem;
-  font-weight: 700;
   color: var(--color-white);
   transition: font-size 0.3s ease, color 0.3s ease;
 }
@@ -86,331 +90,57 @@ section {
   color: var(--color-text);
   font-size: 1.4rem;
 }
-#header.scrolled .logo-icon {
-  transform: scale(0.9);
-}
 
-/* Nav */
+/* 4. NAVIGATION (Desktop) */
 nav {
-  display: flex;
+  display: flex; 
   justify-content: space-between;
   align-items: center;
 }
 .nav-links {
-  background-color: rgba(0, 0, 0, 0.4) !important; /* transparan hitam lembut */
-  backdrop-filter: blur(10px); /* efek blur transparan */
-  box-shadow: none !important;
-  border: none;
+  display: flex important;
+  gap: 2rem;
+  list-style: none;
+  background: transparent;
+  align-items: center;
+  flex-direction: row;
 }
-
-.nav-links a {
-  color: white !important;
+.nav-links li a {
+  color: var(--color-white);
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
 }
-
-#header.scrolled .nav-links {
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.55
-  ) !important; /* saat scroll jadi putih */
-  backdrop-filter: blur(10px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-}
-
-#header.scrolled .nav-links a {
-  color: var(--color-text) !important;
-}
-.nav-links a::after {
+.nav-links li a::after {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--color-text);
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background-color: var(--color-primary);
   transition: width 0.4s ease;
 }
-.nav-links a:hover::after {
+.nav-links li a:hover::after {
   width: 100%;
 }
-
-/* --- Hero --- */
-#hero {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: var(--color-white);
-}
-.hero-content {
-  max-width: 700px;
-}
-.hero-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.7rem;
-  line-height: 1.1;
-}
-.hero-content p {
-  margin-top: 0.2rem;
-  font-size: 0.9rem; /* Ukuran lebih kecil */
-  line-height: 1.5; /* Jarak antar baris lebih rapat */
-  margin-bottom: 2.5rem; /* Jarak bawah lebih pendek */
-}
-.cta-button {
-  padding: 12px 30px;
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: 700;
-  transition: all 0.4s ease;
-}
-.cta-button:hover {
-  background-color: #a88a6d;
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(196, 164, 132, 0.4);
-}
-
-/* --- Section Umum --- */
-.section-title {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-.section-title h2 {
-  font-size: 2.8rem;
-  margin-bottom: 1rem;
-}
-.divider {
-  width: 80px;
-  height: 3px;
-  background-color: var(--color-primary);
-  margin: 0 auto;
-}
-
-/* --- Tentang --- */
-.tentang-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-.tentang-teks h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-}
-.tentang-gambar img {
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* --- Menu --- */
-#menu {
-  background-color: var(--color-white);
-}
-.menu-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-.tab-button {
-  padding: 10px 20px;
-  border-radius: 50px;
-  background-color: var(--color-border);
+#header.scrolled .nav-links li a {
   color: var(--color-text);
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-.tab-button:hover,
-.tab-button.active {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-}
-.tab-content {
-  display: none;
-}
-.tab-content.active {
-  display: grid;
-}
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-.menu-item {
-  text-align: center;
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  overflow: hidden;
-  transition: 0.3s ease;
-}
-.menu-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
-}
-.menu-item img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-}
-.menu-item h3 {
-  font-size: 1.5rem;
-  margin: 1.5rem 0 0.5rem 0;
-}
-.menu-item p {
-  padding: 0 1.5rem 1.5rem;
-  font-size: 0.9rem;
-  color: #666;
 }
 
-/* --- Event --- */
-#event {
-  background-color: var(--color-bg);
-}
-#event .menu-item h3 {
-  font-size: 1.4rem;
-}
-#event .menu-item p {
-  font-size: 0.95rem;
-  padding: 0 1rem 1.5rem;
-}
-
-/* --- Kontak --- */
-.kontak-info {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
-  font-size: 1.1rem;
-}
-.kontak-info p {
-  margin-bottom: 1rem;
-}
-.sub-title {
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  color: var(--color-text);
-  margin: 2rem 0 1rem;
-  text-align: center;
-}
-.kontak-social {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-.kontak-social a {
-  color: var(--color-text);
-  font-size: 1.8rem;
-  transition: 0.3s ease;
-}
-.kontak-social a:hover {
-  color: var(--color-primary);
-  transform: scale(1.2);
-}
-
-/* --- Footer --- */
-footer {
-  background-color: var(--color-text);
-  color: var(--color-white);
-  padding: 2rem 0;
-  text-align: center;
-}
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1rem;
-}
-.footer-social {
-  display: flex;
-  gap: 1rem;
-}
-.footer-social a {
-  color: var(--color-white);
-  font-size: 1.2rem;
-  transition: 0.3s ease;
-}
-.footer-social a:hover {
-  color: var(--color-primary);
-  transform: translateY(-3px);
-}
-footer p {
-  opacity: 0.8;
-}
-
-/* --- WhatsApp Button --- */
-.whatsapp-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 1.5rem;
-  padding: 10px 20px;
-  border-radius: 50px;
-  background-color: #25d366;
-  color: var(--color-white);
-  text-decoration: none;
-  font-weight: 700;
-  transition: 0.3s ease;
-}
-.whatsapp-link:hover {
-  background-color: #1da851;
-  transform: translateY(-3px);
-}
-
-/* --- Peta --- */
-.map-container {
-  margin-top: 4rem;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-.map-container iframe {
-  width: 100%;
-  height: 450px;
-  border: none;
-}
-
-/* --- Tombol Scroll to Top --- */
-#scrollTopBtn {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background-color: var(--color-primary);
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  display: none;
-  z-index: 999;
-  transition: background-color 0.3s ease;
-}
-#scrollTopBtn:hover {
-  background-color: #a88a6d;
-}
-
-/* --- Hamburger --- */
+/* Hamburger icon (hidden on desktop) */
 .hamburger {
   display: none;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
   cursor: pointer;
-  z-index: 1001;
+  z-index: 1100;
 }
 .hamburger span {
   width: 25px;
   height: 3px;
   background-color: var(--color-white);
-  transition: 0.4s ease;
   border-radius: 2px;
+  transition: all 0.3s ease;
 }
 #header.scrolled .hamburger span {
   background-color: var(--color-text);
@@ -425,291 +155,377 @@ footer p {
   transform: rotate(-45deg) translateY(-8px);
 }
 
-/* --- Responsive --- */
-@media (max-width: 768px) {
-  .tentang-layout {
-    grid-template-columns: 1fr;
-  }
-  .tentang-gambar {
-    margin-top: 2rem;
-  }
-  .section-title h2 {
-    font-size: 2.2rem;
-  }
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    background-color: var(--color-text);
-    padding: 1rem 2rem;
-    display: none;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    z-index: 999;
-    opacity: 0;
-    transform: translateY(-10px);
-    pointer-events: none;
-    transition: 0.4s ease;
-  }
-  .nav-links.active {
-    display: flex;
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-  .nav-links a {
-    color: var(--color-white);
-    text-align: center;
-    font-weight: 700;
-    padding: 1rem 0;
-  }
-  .hamburger {
-    display: flex;
-  }
+/* 5. HERO */
+#hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+    url('img/hero-background.jpg') no-repeat center/cover;
+  color: var(--color-white);
 }
-/* --- Fix Warna Logo dan Hamburger Saat Scroll di Mobile --- */
-
-#header.scrolled .logo-text {
-  color: var(--color-text) !important;
+.hero-content h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+.hero-content p {
+  margin: 0.5rem 0 2.5rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.cta-button {
+  padding: 12px 30px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+.cta-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(196,164,132,0.4);
 }
 
-#header.scrolled .logo-icon {
-  transform: scale(0.9);
+/* 6. SECTION TITLES */
+.section-title {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.section-title h2 {
+  font-size: 2.8rem;
+}
+.divider {
+  width: 80px; height: 3px;
+  background-color: var(--color-primary);
+  margin: 0.5rem auto;
+}
+
+/* 7. ABOUT */
+.tentang-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: center;
+
+}
+.tentang-gambar img {
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* 8. MENU */
+.menu-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.tab-button {
+  padding: 10px 20px;
+  border-radius: 50px;
+  background-color: var(--color-border);
+  font-weight: 700;
+  cursor: pointer;
   transition: transform 0.3s ease;
 }
-
-/* Ganti warna garis hamburger saat scroll */
-#header.scrolled .hamburger span {
-  background-color: var(--color-text);
+.tab-button:hover,
+.tab-button.active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  transform: scale(1.05);
 }
-
-@media (max-width: 768px) {
-  /* Warna nav menu saat aktif (dropdown) */
-  .nav-links {
-    background-color: var(--color-text);
-  }
-
-  .nav-links a {
-    color: var(--color-white); /* supaya teks terlihat di latar gelap */
-  }
-
-  #header.scrolled .nav-links a {
-    color: var(--color-white); /* tetap putih walau scroll */
-  }
-
-  /* Hamburger default (di atas hero) tetap putih */
-  .hamburger span {
-    background-color: var(--color-white);
-  }
-
-  /* Hamburger saat scroll jadi gelap */
-  #header.scrolled .hamburger span {
-    background-color: var(--color-text);
-  }
+.menu-grid {
+  display: flex ;
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  gap: 1rem;
+  object-position: center;
 }
-/* Perbaiki nav desktop agar kembali horizontal */
-@media (min-width: 769px) {
-  .nav-links {
-    position: static;
-    display: flex !important;
-    flex-direction: row;
-    background-color: transparent;
-    box-shadow: none;
+.menu-item {
+  position: relative;
+  text-align: center;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.menu-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+.menu-item img {
+  display: block;
+  width: 100%;
+  height: 200px;           
+  object-fit: cover;      
+  object-position: center; 
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.menu-item h3 {
+  margin: 1rem 0 0.5rem;
+}
+.menu-item p {
+  padding: 0 1.5rem 1.5rem;
+  font-size: 0.9rem;
+}
+/* ——— Tab Content Menu ——— */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
     opacity: 1;
-    transform: none;
-    pointer-events: auto;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    color: var(--color-white);
-    font-weight: 600;
-    text-decoration: none;
-    position: relative;
-  }
-
-  #header.scrolled .nav-links a {
-    color: var(--color-text);
-  }
-}
-/* Reset navigasi versi desktop */
-@media (min-width: 769px) {
-  .nav-links {
-    display: flex !important;
-    flex-direction: row;
-    position: static;
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
-    background-color: transparent;
-    box-shadow: none;
-    gap: 2rem;
-    list-style: none;
-    padding: 0;
-  }
-
-  .nav-links li {
-    list-style: none;
-  }
-
-  .nav-links a {
-    color: var(--color-white);
-    text-decoration: none;
-    font-weight: 600;
-    position: relative;
-  }
-
-  #header.scrolled .nav-links a {
-    color: var(--color-text);
-  }
-
-  .nav-links a::after {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background-color: var(--color-primary);
-    transition: width 0.4s ease;
-  }
-
-  .nav-links a:hover::after {
-    width: 100%;
-  }
-}
-@media (min-width: 769px) {
-  nav {
-    background-color: transparent !important;
-    box-shadow: none !important;
-  }
-
-  .nav-links {
-    background-color: transparent !important;
-  }
-}
-.hamburger span {
-  transition: all 0.3s ease;
-}
-/* Perubahan untuk Navigasi Desktop Saat Scroll */
-@media (min-width: 769px) {
-  #header.scrolled .nav-links {
-    background-color: transparent !important;
-    backdrop-filter: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
+    transform: translateY(0);
   }
 }
 
-/* Biarkan Tampilan Mobile Tetap Normal */
-@media (max-width: 768px) {
-  #header.scrolled .nav-links {
-    background-color: rgba(255, 255, 255, 0.8) !important;
-    backdrop-filter: blur(7px);
-    box-shadow: none;
-    border-radius: 0; /* Ubah dari 'none' ke '0' */
-    padding: 0.1rem 2rem;
-  }
+/* 9. EVENT */
+#event .event-content {
+  text-align: center;
+  font-size: 1.2rem;
+  opacity: 0.8;
 }
-.event-content {
-  text-align: center; /* Properti ini membuat semua teks di dalamnya menjadi rata tengah */
-  font-size: 1.2rem; /* Opsional: Membuat tulisan sedikit lebih besar agar lebih terlihat */
-  opacity: 0.8; /* Opsional: Membuat tulisan tampak sedikit pudar */
-}
-@media (max-width: 400px) {
-  .logo-text {
-    font-size: 1.2rem;
-  }
 
-  .cta-button {
-    font-size: 0.9rem;
-    padding: 10px 20px;
-  }
+/* 10. CONTACT */
+.kontak-info {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 2.1rem;
 }
-h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+.sub-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--color-text);
+  margin: 2rem 0 1rem;
+  text-align: center;
+}
+.kontak-social {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.kontak-social a {
+  font-size: 1.8rem;
+  transition: transform 0.3s ease;
+  color: var(--color-text);
+}
+.kontak-social a:hover {
+  color: var(--color-primary);
+  transform: scale(1.2);
 }
 .tab-content {
   display: none;
   opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.tab-content.active {
-  display: grid; /* Ini sudah benar */
-  opacity: 1;
-}
-
-.menu-grid {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-#menu .menu-content {
-  margin-top: 2rem;
-}
-
-.menu-tabs {
-  margin-bottom: 1.5rem; /* rapatkan tombol dengan konten */
-}
-
-.menu-item {
-  display: flex;
-  flex-direction: column;
-}
-
-.menu-item img {
-  height: 200px; /* kurangi tinggi gambar supaya lebih rapat dan proporsional */
-}
-
-.menu-item h3 {
-  margin: 1rem 0 0.3rem 0; /* kurangi jarak antar judul dan deskripsi */
-}
-/* Animasi fade untuk konten tab */
-.tab-content {
-  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   transform: translateY(15px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
 }
-
 .tab-content.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* Reset awal tab-content */
-.tab-content {
-  opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  pointer-events: none; /* cegah klik konten yg tersembunyi */
-}
-
-/* Animasi aktif */
-.tab-content.active {
+  display: grid;
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
-}
-.tab-button {
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-.tab-button.active {
-  transform: scale(1.05);
-}
-.logo-icon {
-  width: 50px;
-  height: auto;
-  object-fit: contain;
+  animation: fadeInUp 0.5s ease-out forwards; 
 }
 
+
+/* 11. FOOTER */
+footer {
+  background-color: var(--color-text);
+  color: var(--color-white);
+  padding: 2rem 0;
+  text-align: center;
+}
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+.footer-social a {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+  color: var(--color-primary);
+
+}
+.footer-social a:hover {
+  transform: translateY(-3px); 
+  color: var(--color-primarye);
+}
+footer p {
+  opacity: 0.8;
+}
+
+/* 12. UTILITIES */
+.whatsapp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 1.5rem;
+  padding: 10px 20px;
+  border-radius: 50px;
+  background-color: #25d366;
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.3s ease;
+
+}
+.whatsapp-link:hover {
+  background-color: #1da851;
+  transform: translateY(-3px);
+}
+  .map-container {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+#scrollTopBtn {
+  position: fixed; bottom: 30px; right: 30px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none; padding: 10px 15px;
+  border-radius: 50%; font-size: 1.2rem;
+  cursor: pointer; display: none; z-index: 999;
+}
+#scrollTopBtn:hover {
+  background-color: #a88a6d;
+}
+
+/* 13. MOBILE NAV OVERLAY */
 @media (max-width: 768px) {
-  .logo-icon {
-    width: 40px;
+  /* Hide desktop nav, show hamburger */
+  .nav-links {
+    display: none !important;
+  }
+  .hamburger {
+    display: flex !important;
   }
 
-  .logo-text {
-    font-size: 1.2rem;
-    color: var(--color-white); /* Pastikan tidak jadi biru */
+  /* Full‑screen overlay menu */
+  .mobile-nav-overlay {
+    position: fixed;
+  inset: 0;                /* top/left/right/bottom: 0 */
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3rem;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 2000;
   }
+  .mobile-nav-overlay.active {
+    transform: translateX(0);
+  }
+
+  /* Close button */
+  .close-btn {
+    position: absolute; top: 1rem; right: 1rem;
+    font-size: 2.5rem; color: var(--color-white);
+    background: none; border: none;
+    cursor: pointer; z-index: 2100;
+  }
+
+  /* Overlay links */
+  .overlay-links {
+    list-style: none;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .overlay-links li {
+    margin: 1.2rem 0;
+  }
+  .overlay-links li a {
+    color: var(--color-white);
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .overlay-links li a:hover {
+    color: var(--color-primary);
+  }
+
+  /* Prevent body scroll */
+  body.no-scroll {
+    height: 100vh;
+    overflow: hidden;
+  }
+    /* ganti grid jadi flex column-reverse untuk mobile */
+  .tentang-layout {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2rem; /* atau 1rem sesuai selera */
+  }
+  @media (max-width: 768px) {
+  /* 1) Buat section menu lebih ‘kompak’ atas‐bawah */
+  #menu {
+    padding: 1rem 0 !important;
+  }
+
+  /* 2) Hilangkan margin/padding ekstra di dalam menu-content */
+  #menu .menu-content {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 3) Scroll‑snap: top‑align semua item */
+  .menu-content .menu-grid {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.5rem 0;
+    align-items: flex-start;          /* <<< penting */
+  }
+  .menu-content .menu-grid .menu-item {
+    flex: 0 0 80%;
+    scroll-snap-align: start;
+  }
+  .menu-content .menu-grid::-webkit-scrollbar { display: none; }
+  .menu-content .menu-grid { scrollbar-width: none; -ms-overflow-style: none; }
+
+  /* 4) Rapikan jarak tombol tab ke konten */
+  .menu-tabs {
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+  }
+
+
+/* 14. DESKTOP OVERRIDE */
+@media (min-width: 769px) {
+  .nav-links {
+    display: flex !important;
+    flex-direction: row;
+    gap: 2rem;
+  }
+  .hamburger,
+  .mobile-nav-overlay,
+  .close-btn {
+    display: none !important;
+  }
+}
+/*  Pastikan setiap .tab-content selalu align ke atas parent */
+.menu-content {
+  display: grid;
+}
+.menu-content > .tab-content {
+  align-self: start;
 }
