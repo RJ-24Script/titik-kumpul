@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Titik Kumpul | Coffee & Community</title>
 
+    <!-- Fonts & AOS CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,31 +13,16 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css" />
+
+    <!-- FontAwesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
       crossorigin="anonymous"
     />
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-      #menu {
-        scroll-margin-top: 100px;
-      }
-    </style>
-    <!-- SEO Meta Tags -->
-<meta name="description" content="Titik Kumpul adalah kafe komunitas di Ransiki, Papua Barat. Sajikan kopi spesial, suasana hangat, dan ruang untuk berbagi cerita.">
-<meta name="keywords" content="Titik Kumpul, kafe Ransiki, coffee shop Papua, komunitas, kopi lokal, cafe cozy, Titik Kumpul Ransiki">
-<meta name="author" content="Titik Kumpul Ransiki">
-
-<!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
-<meta property="og:title" content="Titik Kumpul | Coffee & Community">
-<meta property="og:description" content="Kafe dan ruang komunitas di Ransiki. Tempat cerita Anda dimulai.">
-<meta property="og:image" content="https://yourdomain.com/img/hero-background.jpg">
-<meta property="og:url" content="https://yourdomain.com">
-<meta property="og:type" content="website">
   </head>
 
   <body>
@@ -47,12 +33,19 @@
             src="img/logo-icon.png"
             alt="Logo Titik Kumpul"
             class="logo-icon"
-            loading="lazy">
+            loading="lazy"
+          />
           <span class="logo-text">Titik Kumpul</span>
         </a>
+
+        <!-- Hamburger (mobile) -->
         <div class="hamburger" id="hamburger">
-          <span></span><span></span><span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+
+        <!-- Desktop nav -->
         <ul class="nav-links">
           <li><a href="#hero">Home</a></li>
           <li><a href="#tentang">About</a></li>
@@ -61,30 +54,57 @@
           <li><a href="#kontak">Contact</a></li>
         </ul>
       </nav>
+
+      <!-- Mobile full‑screen overlay nav -->
+      <div id="mobile-nav-overlay" class="mobile-nav-overlay">
+        <button
+          id="close-btn"
+          class="close-btn"
+          aria-label="Tutup menu"
+        >&times;</button>
+        <ul class="overlay-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#tentang">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#event">Event</a></li>
+          <li><a href="#kontak">Contact</a></li>
+        </ul>
+      </div>
     </header>
 
     <main>
-      <section id="hero" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-     url('img/hero-background.jpg') no-repeat center center/cover;">
-  <div class="hero-content">
-    <h1 data-aos="fade-down">Tempat Cerita Anda Dimulai.</h1>
-    <p data-aos="fade-down" data-aos-delay="150">
-      Menyajikan lebih dari sekadar kopi, kami menyajikan momen.<br>
-      Selamat datang di Titik Kumpul.
-    </p>
-    <a href="#menu" class="cta-button" data-aos="zoom-in" data-aos-delay="300">
-      Lihat Menu Kami
-    </a>
-  </div>
-</section>
+      <!-- Hero -->
+      <section
+        id="hero"
+        style="
+          background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+            url('img/hero-background.jpg') no-repeat center/cover;
+        "
+      >
+        <div class="hero-content">
+          <h1 data-aos="fade-down">Tempat Cerita Anda Dimulai.</h1>
+          <p data-aos="fade-down" data-aos-delay="150">
+            Menyajikan lebih dari sekadar kopi, kami menyajikan momen.<br />
+            Selamat datang di Titik Kumpul.
+          </p>
+          <a
+            href="#menu"
+            class="cta-button"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+            >Lihat Menu Kami</a
+          >
+        </div>
+      </section>
 
+      <!-- About -->
       <section id="tentang">
         <div class="container tentang-layout">
           <div class="tentang-teks" data-aos="fade-right">
             <h2>Kisah Di Balik Cangkir</h2>
             <p>
-              Titik Kumpul lahir dari impian sederhana: menciptakan ruang di
-              mana koneksi terjalin dan komunitas tumbuh.
+              Titik Kumpul lahir dari impian sederhana: menciptakan ruang di mana
+              koneksi terjalin dan komunitas tumbuh.
             </p>
             <p>
               Kami percaya kopi adalah jembatan. Mari bertemu, berbagi cerita,
@@ -95,96 +115,168 @@
             <img
               src="img/about-image.jpg"
               alt="Suasana interior kafe Titik Kumpul"
-              loading="lazy">
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
 
-      <section id="menu">
-        <div class="container">
-          <div class="section-title" data-aos="fade-up">
-            <h2>Menu Andalan Kami</h2>
-            <div class="divider"></div>
-          </div>
-
-          <div class="menu-tabs" data-aos="fade-up" data-aos-delay="100">
-            <button class="tab-button active" data-tab="minuman">
-              Minuman
-            </button>
-            <button class="tab-button" data-tab="makanan">Makanan</button>
-          </div>
-
-          <div class="menu-content">
-           <!-- Minuman -->
-<div class="menu-grid tab-content active" id="minuman">
-  <div class="menu-item">
-    <img src="img/menu1.jpg" alt="Kopi Susu Gula Aren" loading="lazy">
-    <h3>Kopi Susu Gula Aren</h3>
-    <p>Perpaduan klasik espresso, susu segar, dan manisnya gula aren asli.</p>
-  </div>
-  <div class="menu-item">
-    <img src="img/menu2.jpg" alt="Manual Brew V60" loading="lazy">
-    <h3>Manual Brew V60</h3>
-    <p>Nikmati karakter asli biji kopi pilihan melalui metode seduh manual.</p>
-  </div>
-  <div class="menu-item">
-    <img src="img/menu4.jpg" alt="Cappuccino" loading="lazy">
-    <h3>Cappuccino</h3>
-    <p>Espresso dengan susu berbusa lembut, sempurna untuk pagi atau sore hari.</p>
-  </div>
-  <div class="menu-item">
-    <img src="img/menu5.jpg" alt="Iced Latte" loading="lazy">
-    <h3>Iced Latte</h3>
-    <p>Kombinasi espresso dan susu dingin dengan sentuhan rasa ringan dan segar.</p>
-  </div>
-  <div class="menu-item">
-    <img src="img/menu6.jpg" alt="Matcha Latte" loading="lazy">
-    <h3>Matcha Latte</h3>
-    <p>Minuman berbasis teh hijau Jepang, creamy dan menenangkan.</p>
-  </div>
-</div>
-
-
-           <!-- Makanan -->
-<div class="menu-grid tab-content" id="makanan">
-  <div class="menu-item">
-    <img src="img/menu3.jpg" alt="Pastry & Croissant" loading="lazy">
-    <h3>Pastry & Croissant</h3>
-    <p>Renyah di luar dan lembut di dalam, pendamping sempurna untuk kopi Anda.</p>
-  </div>
-  <div class="menu-item">
-    <img src="img/menu7.jpg" alt="Spaghetti Aglio Olio" loading="lazy">
-    <h3>Spaghetti Aglio Olio</h3>
-    <p>Spaghetti dengan bumbu bawang putih, cabai, dan minyak zaitun, simpel tapi lezat.</p>
-  </div>
-  <div class="menu-item">
-    <img src="img/menu8.jpg" alt="Chicken Teriyaki Rice Bowl" loading="lazy">
-    <h3>Chicken Teriyaki Rice Bowl</h3>
-    <p>Nasi hangat dengan ayam panggang saus teriyaki, gurih dan mengenyangkan.</p>
-  </div>
-  <div class="menu-item">
-    <img src="img/menu9.jpg" alt="Cheese Toast" loading="lazy">
-    <h3>Cheese Toast</h3>
-    <p>Roti panggang isi keju leleh, nikmat dan pas untuk camilan.</p>
-  </div>
-</div>
-</div>
-
-           
-      <section id="event">
+     <!-- Menu -->
+<section id="menu">
   <div class="container">
     <div class="section-title" data-aos="fade-up">
-      <h2>Acara & Event</h2>
+      <h2>Menu Andalan Kami</h2>
       <div class="divider"></div>
     </div>
-    <!-- Konten event -->
-    <div class="event-content" data-aos="fade-up" data-aos-delay="100">
-      <p>
-        Coming Soon...
-      </p>
+      
+    <!-- Tab Buttons -->
+    <div class="menu-tabs" data-aos="fade-up" data-aos-delay="100">
+      <button class="tab-button" data-tab="kopi">
+        Kopi
+      </button>
+      <button class="tab-button active" data-tab="minuman">
+        Non-Kopi
+      </button>
+      <button class="tab-button" data-tab="makanan">
+        Snack
+     </button>
+     </div>
+
+    <div class="menu-content">
+      <!-- Kopi -->
+      <div class="menu-grid tab-content" id="kopi">
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="150">
+          <img src="img/V60.jpg" alt="V60" />
+          <h3>V60</h3>
+          <p>Nikmati karakter asli biji kopi pilihan melalui metode seduh manual.</p>
+        </div>
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="250">
+          <img src="img/CaramelMacchiato.jpg" alt="Caramel Macchiato" />
+          <h3>Caramel Macchiato</h3>
+          <p>Espresso dicampur susu,sirup vanila, dan saus karamel.</p>
+        </div>
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="350">
+          <img src="img/Vanillalatte.jpg" alt="Vanilla Latte" />
+          <h3>Vanilla Latte</h3>
+          <p>Minuman es kopi dengan perpaduan espresso, susu dan sirup vanilla.</p>
+        </div>
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="450">
+          <img src="img/LongBlack.jpg" alt="Long Black" />
+          <h3>Long Black</h3>
+          <p>Long Black mirip seperti americano, tetapi memiliki aroma dan cita rasa yang lebih kuat.</p>
+        </div>
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="550">
+          <img src="img/Americano.jpg" alt="Americano" />
+          <h3>Americano</h3>
+          <p>Americano adalah minuman kopi yang terbuat dari campuran espresso dan air panas.</p>
+        </div>
+         <div class="menu-item" data-aos="fade-up" data-aos-delay="550">
+          <img src="img/KopiTubruk.jpg" alt="Kopi Tubruk" />
+          <h3>Kopi Tubruk</h3>
+          <p>Kopi hitam yang dinikmati dengan ampas kopi, diseduh dengan suhu tertentu hingga menghasilkan rasa kopi yang kuat dan enak.</p>
+        </div>
+         <div class="menu-item" data-aos="fade-up" data-aos-delay="550">
+          <img src="img/VietnamDrip.jpg" alt="Vietnam Drip" />
+          <h3>Vietnam Drip</h3>
+          <p>Vietnam Drip adalah metode pembuatan kopi tradisional yang berasal dari Vietnam.</p>
+        </div>
+         <div class="menu-item" data-aos="fade-up" data-aos-delay="550">
+          <img src="img/Mochaccino.jpg" alt="Mochaccino" />
+          <h3>Mochaccino</h3>
+          <p>Perpaduan antara kopi dengan rasa yang kuat dengan cokelat  yang manis dan kaya.</p>
+        </div>
+         <div class="menu-item" data-aos="fade-up" data-aos-delay="550">
+          <img src="img/GulaAren.jpg" alt="Kopi Susu Gula Aren" />
+          <h3>Kopi Susu Gula Aren</h3>
+          <p>Perpaduan klasik espresso, susu segar, dan manisnya gula aren asli.</p>
+        </div>
+         <div class="menu-item" data-aos="fade-up" data-aos-delay="550">
+          <img src="img/Cappucino.jpg" alt="Cappucino" />
+          <h3>Cappuccino</h3>
+          <p>Espresso dengan susu berbusa lembut, sempurna untuk pagi atau sore hari..</p>
+        </div>
+         <div class="menu-item" data-aos="fade-up" data-aos-delay="550">
+          <img src="img/EspressoDouble.jpg" alt="Espresso Double" />
+          <h3>Espresso Double</h3>
+          <p>Dua sloki espresso pekat. Pilihan tepat untuk dorongan energi dalam secangkir kopi yang kuat dan berkarakter..</p>
+        </div>
+      </div>
+      
+      <!-- Minuman -->
+      <div class="menu-grid tab-content active" id="minuman">
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="150">
+          <img src="img/Chocolate.jpg" alt="Chocolate Ice/Hot" />
+          <h3>Chocolate Ice/Hot</h3>
+          <p>Manisnya cokelat premium berpadu sempurna dengan susu segar, pilihan tepat untuk mencerahkan hari Anda.</p>
+        </div>
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="250">
+          <img src="img/Taro.jpg" alt="Taro Ice" />
+          <h3>Taro Ice</h3>
+          <p>Kesegaran talas ungu dalam satu gelas. Minuman manis dan creamy dengan warna cantik yang akan mencerahkan harimu.</p>
+        </div>
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="350">
+          <img src="img/Strawberry.jpg" alt="Strawberry Ice" />
+          <h3>Strawberry Ice</h3>
+          <p>Kesegaran manis dari buah strawberry dalam segelas minuman dingin. Pilihan sempurna yang disukai semua kalangan untuk mencerahkan suasana hatimu.</p>
+        </div>
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="450">
+          <img src="img/RedVelvet.jpg" alt="Red Velvet Ice" />
+          <h3>Red Velvet Ice</h3>
+          <p>Cita rasa kue Red Velvet yang unik, kini dalam minuman dingin yang menyegarkan. Manis, creamy, dan sangat memanjakan.</p>
+        </div>
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="550">
+          <img src="img/GreenTea.jpg" alt="Green Tea Ice" />
+          <h3>Green Tea Ice</h3>
+          <p>Rasa unik teh hijau Jepang dalam sajian modern yang dingin. Manis, creamy, dengan sedikit sentuhan pahit yang khas. Selalu jadi pilihan yang tepat dan menyegarkan.</p>
+        </div>
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="550">
+          <img src="img/Mojito.jpg" alt="Mojito" />
+          <h3>Mojito</h3>
+          <p>Minuman asal Kuba yang terkenal dengan kombinasi rasa segar jus lemon, jeruk, maupun sirup leci.</p>
+        </div>
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="550">
+          <img src="img/StrawberryMatchaLatte.jpg" alt="Strawberry Matcha Latte" />
+          <h3>Strawberry Matcha Latte</h3>
+          <p>Campuran strawberry yang dihaluskan dan dipadu dengan aroma matcha, susu kental manis, dan es batu.</p>
+        </div>
+      </div>
+
+      <!-- Makanan -->
+      <div class="menu-grid tab-content" id="makanan">
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="150">
+          <img src="img/Sosis.jpg" alt="Sosis Goreng" />
+          <h3>Sosis Goreng</h3>
+          <p>Rame-rame lebih seru! Potongan sosis goreng renyah yang disajikan dalam porsi pas untuk berbagi. Semakin nikmat dicocol bersama-sama, pilihan tepat untuk menemani obrolan hangat Anda hingga larut.</p>
+        </div>
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="250">
+          <img src="img/PisangCoklatKeju.jpg" alt="Pisang Goreng Coklat Keju" />
+          <h3>Pisang Goreng Coklat Keju</h3>
+          <p>Pisang goreng garing di luar, lembut di dalam. Ditambah topping cokelat lumer dan keju gurih, kombinasi nikmat yang selalu bikin nagih.</p>
+        </div>
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="350">
+          <img src="img/Kentang.jpg" alt="Kentang Goreng" />
+          <h3>Kentang Goreng</h3>
+          <p>Kentang goreng renyah dan gurih, disajikan hangat dengan cocolan saus pilihan Anda. Camilan ringan yang selalu pas.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+      <!-- Event -->
+      <section id="event">
+        <div class="container">
+          <div class="section-title" data-aos="fade-up">
+            <h2>Acara & Event</h2>
+            <div class="divider"></div>
+          </div>
+          <div class="event-content" data-aos="fade-up" data-aos-delay="100">
+            <p>Coming Soon...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
       <section id="kontak">
         <div class="container">
           <div class="section-title" data-aos="fade-up">
@@ -193,116 +285,53 @@
           </div>
           <div class="kontak-info" data-aos="fade-up" data-aos-delay="100">
             <p>
-              Kami menanti kehadiran Anda untuk secangkir kopi dan obrolan
-              hangat.
+              "Kami menanti kehadiran Anda untuk secangkir kopi dan obrolan
+              hangat."
             </p>
             <p>
-              <strong>Alamat: </strong></p>
-              <p>Jalan Sujarwo Condronegoro SH, Ransiki Kota, Distrik Ransiki, Kab. Manokwari Selatan, Papua Bar. 98324
+              <strong>Alamat:</strong> <br>Jalan Sujarwo Condronegoro SH, Ransiki
+              Kota, Distrik Ransiki, Kab. Manokwari Selatan, Papua Bar. 98324
             </p>
-            <p><strong>Jam Buka:</strong> </p>
-              <p> Setiap Hari, 08:00 - 22:00 WIT</p>
+            <p><strong>Jam Buka:</strong> <br>Setiap Hari, 08:00 - 22:00 WIT</p>
             <a
               href="https://wa.me/6282395084343"
               class="whatsapp-link"
               target="_blank"
+              ><i class="fab fa-whatsapp"></i> Hubungi via WhatsApp</a
             >
-              <i class="fab fa-whatsapp"></i> Hubungi via WhatsApp
-            </a>
             <div class="kontak-social">
-              <a
-                href="https://www.instagram.com/cafetitikkumpul.ransiki"
-                target="_blank"
-                ><i class="fab fa-instagram"></i
-              ></a>
-              <a
-                href="https://www.facebook.com/share/192cEQMywA"
-                target="_blank"
-                ><i class="fab fa-facebook-f"></i
-              ></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
             </div>
           </div>
-
-         <div class="map-container" data-aos="fade-up" data-aos-delay="200">
-    <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255259.92013496073!2d134.00285142995065!3d-1.5081285104108073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d5243e1f980da0f%3A0x2417976b0770f56f!2sTitik%20Kumpul%20Cafe!5e0!3m2!1sid!2sid!4v1753609579821!5m2!1sid!2sid" 
-        width="100%" 
-        height="450" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-</div>
+          <div class="map-container" data-aos="fade-up" data-aos-delay="200">
+            <!-- google maps iframe -->
+          </div>
         </div>
       </section>
     </main>
 
+      <!-- All Rights Reserved -->
+  <div class="rights-reserved container" style="text-align: center; color: rgb(206, 206, 206);" >
+    <p> All rights reserved. </p>
+
+  </div>
+    <!-- Footer -->
     <footer>
       <div class="container footer-content">
         <p>&copy; 2025 Titik Kumpul Coffee Shop.</p>
         <div class="footer-social">
-          <a
-            href="https://www.instagram.com/cafetitikkumpul.ransiki"
-            target="_blank"
-            ><i class="fab fa-instagram"></i
-          ></a>
-          <a href="https://www.facebook.com/share/192cEQMywA" target="_blank"
-            ><i class="fab fa-facebook-f"></i
-          ></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
         </div>
       </div>
     </footer>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      AOS.init({ duration: 800, once: true, offset: 50 });
-
-      window.addEventListener("scroll", function () {
-        const header = document.getElementById("header");
-        header.classList.toggle("scrolled", window.scrollY > 50);
-      });
-
-      const hamburger = document.getElementById("hamburger");
-      const navLinks = document.querySelector(".nav-links");
-      hamburger.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-      });
-
-      // Smooth scroll
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        });
-      });
-
-      // Tab switch
-      document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll(".tab-button").forEach((button) => {
-          button.addEventListener("click", () => {
-            document
-              .querySelectorAll(".tab-button")
-              .forEach((btn) => btn.classList.remove("active"));
-            document
-              .querySelectorAll(".tab-content")
-              .forEach((content) => content.classList.remove("active"));
-            button.classList.add("active");
-            const tabId = button.getAttribute("data-tab");
-            document.getElementById(tabId).classList.add("active");
-          });
-        });
-
-        const navEventLink = document.getElementById("navEventLink");
-        navEventLink.addEventListener("click", () => {
-          const eventBtn = document.querySelector('[data-tab="event"]');
-          if (eventBtn) eventBtn.click();
-        });
-      });
-    </script>
+    <!-- Scroll Top Button -->
     <button id="scrollTopBtn" title="Kembali ke Atas">↑</button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>  
+    <script src="js/script.js"></script>
   </body>
 </html>
