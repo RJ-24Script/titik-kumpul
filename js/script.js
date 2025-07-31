@@ -1,125 +1,39 @@
-// Menunggu semua konten HTML dimuat sebelum menjalankan skrip
+console.log("✅ script.js loaded"); // Tes apakah script.js benar-benar aktif
+
 document.addEventListener("DOMContentLoaded", function () {
-  // 1. Inisialisasi Library AOS (Animasi saat scroll)
-  AOS.init({
-    duration: 800, // Durasi animasi
-    once: true, // Animasi hanya berjalan sekali
-    offset: 50, // Jarak picu animasi
-  });
-
-  // 2. Efek Scroll pada Header
-  const header = document.getElementById("header");
-  window.addEventListener("scroll", function () {
-    // Tambah/hapus class 'scrolled' jika scroll lebih dari 50px
-    header.classList.toggle("scrolled", window.scrollY > 50);
-  });
-
-  // 3. Fungsi Hamburger Menu untuk Mobile
-  const hamburger = document.getElementById("hamburger");
-  const navLinks = document.querySelector(".nav-links");
-
-  hamburger.addEventListener("click", () => {
-    // Toggle class 'active' untuk menampilkan/menyembunyikan menu
-    navLinks.classList.toggle("active");
-    // Toggle class 'is-active' untuk animasi ikon hamburger menjadi 'X'
-    hamburger.classList.toggle("is-active");
-  });
-
-  // 4. Smooth Scroll dan Menutup Menu Mobile saat Link di-klik
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault(); // Mencegah perilaku default link
-
-      const target = document.querySelector(this.getAttribute("href"));
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-
-      // Otomatis tutup menu mobile setelah link navigasi di-klik
-      if (navLinks.classList.contains("active")) {
-        navLinks.classList.remove("active");
-        hamburger.classList.remove("is-active");
-      }
-    });
-  });
-
-  // 5. Tombol "Scroll to Top"
-  const scrollTopBtn = document.getElementById("scrollTopBtn");
-  window.addEventListener("scroll", () => {
-    if (scrollTopBtn) {
-      // Tampilkan tombol jika scroll lebih dari 300px
-      scrollTopBtn.style.display = window.scrollY > 300 ? "flex" : "none";
-      // Agar icon ditengah, ganti display jadi flex
-      scrollTopBtn.style.alignItems = "center";
-      scrollTopBtn.style.justifyContent = "center";
-    }
-  });
-
-  if (scrollTopBtn) {
-    scrollTopBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+  // Inisialisasi AOS
+  if (typeof AOS !== "undefined") {
+    AOS.init({ duration: 800, once: true, offset: 50 });
   }
 
-  // 6. Fungsi Tab pada Bagian Menu
-  document.querySelectorAll(".tab-button").forEach((button) => {
-    button.addEventListener("click", () => {
-      // Hapus class 'active' dari semua tombol dan konten
-      document
-        .querySelectorAll(".tab-button")
-        .forEach((btn) => btn.classList.remove("active"));
-      document
-        .querySelectorAll(".tab-content")
-        .forEach((content) => content.classList.remove("active"));
-
-      // Tambahkan class 'active' ke tombol dan konten yang di-klik
-      button.classList.add("active");
-      const tabId = button.getAttribute("data-tab");
-      const tabContent = document.getElementById(tabId);
-      if (tabContent) {
-        tabContent.classList.add("active");
-      }
-    });
-  });
-}); // Akhir dari event listener DOMContentLoaded
-document.addEventListener("DOMContentLoaded", function () {
-  AOS.init({
-    duration: 800,
-    once: true,
-    offset: 50,
-  });
-
+  // Header scroll
   const header = document.getElementById("header");
-  const hamburger = document.getElementById("hamburger");
-  const navLinks = document.querySelector(".nav-links");
-  const scrollTopBtn = document.getElementById("scrollTopBtn");
-
   window.addEventListener("scroll", function () {
     header.classList.toggle("scrolled", window.scrollY > 50);
-
-    if (scrollTopBtn) {
-      scrollTopBtn.style.display = window.scrollY > 300 ? "flex" : "none";
-      scrollTopBtn.style.alignItems = "center";
-      scrollTopBtn.style.justifyContent = "center";
-    }
   });
+
+  // Hamburger
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.querySelector(".nav-links");
 
   if (hamburger && navLinks) {
-    hamburger.addEventListener("click", () => {
+    hamburger.addEventListener("click", function () {
       navLinks.classList.toggle("active");
       hamburger.classList.toggle("is-active");
+      console.log("Hamburger diklik");
     });
+  } else {
+    console.error("❌ Tidak menemukan .hamburger atau .nav-links");
   }
 
+  // Smooth scroll dan close mobile nav
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-
       const target = document.querySelector(this.getAttribute("href"));
       if (target) {
+        e.preventDefault();
         target.scrollIntoView({ behavior: "smooth", block: "start" });
       }
-
       if (navLinks && navLinks.classList.contains("active")) {
         navLinks.classList.remove("active");
         hamburger.classList.remove("is-active");
@@ -127,51 +41,70 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // Scroll to top button
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+  window.addEventListener("scroll", () => {
+    if (scrollTopBtn) {
+      scrollTopBtn.style.display = window.scrollY > 300 ? "flex" : "none";
+      scrollTopBtn.style.alignItems = "center";
+      scrollTopBtn.style.justifyContent = "center";
+    }
+  });
+
   if (scrollTopBtn) {
     scrollTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 
-  document.querySelectorAll(".tab-button").forEach((button) => {
+  // Tab menu
+  const tabButtons = document.querySelectorAll(".tab-button");
+  const tabContents = document.querySelectorAll(".tab-content");
+  tabButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      document.querySelectorAll(".tab-button").forEach((btn) => btn.classList.remove("active"));
-      document.querySelectorAll(".tab-content").forEach((content) => content.classList.remove("active"));
-
+      tabButtons.forEach((btn) => btn.classList.remove("active"));
+      tabContents.forEach((content) => content.classList.remove("active"));
       button.classList.add("active");
       const tabId = button.getAttribute("data-tab");
-      const tabContent = document.getElementById(tabId);
-      if (tabContent) {
-        tabContent.classList.add("active");
+      const content = document.getElementById(tabId);
+      if (content) {
+        setTimeout(() => content.classList.add("active"), 50);
       }
     });
   });
 });
-document.addEventListener("DOMContentLoaded", function () {
-  const buttons = document.querySelectorAll(".tab-button");
-  const contents = document.querySelectorAll(".tab-content");
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.getElementById("hamburger");
+  const overlay = document.getElementById("mobile-nav-overlay");
+  const closeBtn = document.getElementById("close-btn");
 
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const tabId = button.getAttribute("data-tab");
-      const activeContent = document.getElementById(tabId);
-
-      // Hilangkan class active dari semua tombol
-      buttons.forEach((btn) => btn.classList.remove("active"));
-      button.classList.add("active");
-
-      // Hilangkan class active dari semua konten dan tambahkan timeout agar animasi fade jalan
-      contents.forEach((content) => {
-        if (content.classList.contains("active")) {
-          content.classList.remove("active");
-        }
-      });
-
-      // Delay kecil supaya animasi bisa muncul dengan baik
-      setTimeout(() => {
-        activeContent.classList.add("active");
-      }, 50);
+  // buka overlay
+  hamburger.addEventListener("click", () => {
+    overlay.classList.add("active");
+    hamburger.classList.add("is-active");
+  });
+  // tutup overlay
+  closeBtn.addEventListener("click", () => {
+    overlay.classList.remove("active");
+    hamburger.classList.remove("is-active");
+  });
+  // tutup saat link diklik
+  document.querySelectorAll(".overlay-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      overlay.classList.remove("active");
+      hamburger.classList.remove("is-active");
     });
   });
 });
-
+document.querySelectorAll('.prev-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const grid = btn.nextElementSibling;
+    grid.scrollBy({ left: -grid.clientWidth * 0.8, behavior: 'smooth' });
+  });
+});
+document.querySelectorAll('.next-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const grid = btn.previousElementSibling;
+    grid.scrollBy({ left: grid.clientWidth * 0.8, behavior: 'smooth' });
+  });
+});
